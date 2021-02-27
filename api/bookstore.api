@@ -1,0 +1,52 @@
+syntax = "v1"
+
+info(
+	title: "title"
+	desc: "desc"
+	author: "brady"
+	email: "brady.wang@qq.com"
+)
+
+type (
+	AddBookReq {
+		Name  string `form:"name"`
+		Price int64  `form:"price"`
+	}
+
+	AddBookResp {
+		Ok bool `json:"ok"`
+	}
+)
+
+type (
+	QueryByNameReq {
+		Name string `form:"name"`
+	}
+
+	QueryByNameResp {
+		Id    int64  `json:"id"`
+		Name  string `json:"name"`
+		Price int64  `json:"price"`
+	}
+)
+
+type (
+	QueryAllReq {
+	}
+
+	QueryAllResp {
+		BookList []QueryByNameResp `json:"bookList"`
+	}
+)
+
+service bookstore-api {
+
+	@handler AddBookHandler
+	get /addBook (AddBookReq) returns (AddBookResp)
+	
+	@handler QueryByNameHandler
+	get /queryByName (QueryByNameReq) returns (QueryByNameResp)
+	
+	@handler QueryAllHandler
+	get /queryAll (QueryAllReq) returns (QueryAllResp)
+}

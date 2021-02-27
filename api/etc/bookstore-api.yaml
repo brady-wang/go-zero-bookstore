@@ -1,0 +1,11 @@
+Name: bookstore-api
+Host: 0.0.0.0
+Port: 8888
+
+
+
+Book:
+  Etcd:
+    Hosts:
+      - localhost:2379
+    Key: book.rpc

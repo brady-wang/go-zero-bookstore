@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package book;
+
+message AddRequest {
+  string name = 1;
+  int64 price = 2;
+}
+
+message AddResponse {
+  bool Ok = 1;
+}
+
+
+message QueryByNameRequest{
+  string name = 1;
+}
+
+message QueryByNameResponse{
+  int64 Id = 1;
+  string Name = 2;
+  int64 Price = 3;
+}
+
+message QueryAllRequest{
+
+}
+
+message QueryAllResponse{
+  repeated QueryByNameResponse List = 1 ;
+}
+
+
+service Book {
+  rpc AddBook(AddRequest) returns(AddResponse);
+  rpc QueryByName(QueryByNameRequest) returns (QueryByNameResponse);
+  rpc QueryAll(QueryAllRequest) returns (QueryAllResponse);
+}

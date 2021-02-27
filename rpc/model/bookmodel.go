@@ -25,7 +25,7 @@ type (
 		Update(data Book) error
 		Delete(id int64) error
 		FindByName(name string) (*Book, error)
-		FindAll() ([]*Book, error)
+		FindAll() ([]Book, error)
 	}
 
 	defaultBookModel struct {
@@ -82,9 +82,9 @@ func (m *defaultBookModel) FindByName(name string) (*Book, error) {
 	}
 }
 
-func (m *defaultBookModel) FindAll() ([]*Book, error) {
+func (m *defaultBookModel) FindAll() ([]Book, error) {
 	query := fmt.Sprintf("select %s from %s ", bookRows, m.table)
-	var resp []*Book
+	var resp []Book
 	err := m.conn.QueryRows(&resp, query)
 	switch err {
 	case nil:

@@ -23,7 +23,7 @@ type (
 		Name string `form:"name"`
 	}
 
-	QueryByNameResp {
+	QueryByNameResponse {
 		Id    int64  `json:"id"`
 		Name  string `json:"name"`
 		Price int64  `json:"price"`
@@ -35,7 +35,7 @@ type (
 	}
 
 	QueryAllResp {
-		BookList []QueryByNameResp `json:"bookList"`
+		BookList []*QueryByNameResponse `json:"bookList"`
 	}
 )
 
@@ -45,7 +45,7 @@ service bookstore-api {
 	get /addBook (AddBookReq) returns (AddBookResp)
 	
 	@handler QueryByNameHandler
-	get /queryByName (QueryByNameReq) returns (QueryByNameResp)
+	get /queryByName (QueryByNameReq) returns (QueryByNameResponse)
 	
 	@handler QueryAllHandler
 	get /queryAll (QueryAllReq) returns (QueryAllResp)

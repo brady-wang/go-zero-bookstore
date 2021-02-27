@@ -23,14 +23,14 @@ func NewQueryByNameLogic(ctx context.Context, svcCtx *svc.ServiceContext) QueryB
 	}
 }
 
-func (l *QueryByNameLogic) QueryByName(req types.QueryByNameReq) (*types.QueryByNameResp, error) {
+func (l *QueryByNameLogic) QueryByName(req types.QueryByNameReq) (*types.QueryByNameResponse, error) {
 	// 手动代码开始
 	resp, err :=l.svcCtx.Book.QueryByName(l.ctx,&book.QueryByNameRequest{Name: req.Name})
 	if err != nil {
 		return nil, err
 	}
 
-	return &types.QueryByNameResp{
+	return &types.QueryByNameResponse{
 		Id: resp.GetId(),
 		Name: resp.GetName(),
 		Price:resp.GetPrice(),

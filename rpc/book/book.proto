@@ -26,6 +26,8 @@ message QueryAllRequest{
 
 }
 
+
+
 message QueryAllResponse{
   repeated QueryByNameResponse List = 1 ;
 }

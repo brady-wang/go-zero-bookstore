@@ -15,7 +15,7 @@ type QueryByNameReq struct {
 	Name string `form:"name"`
 }
 
-type QueryByNameResp struct {
+type QueryByNameResponse struct {
 	Id    int64  `json:"id"`
 	Name  string `json:"name"`
 	Price int64  `json:"price"`
@@ -25,5 +25,5 @@ type QueryAllReq struct {
 }
 
 type QueryAllResp struct {
-	BookList []QueryByNameResp `json:"bookList"`
+	BookList []*QueryByNameResponse `json:"bookList"`
 }
